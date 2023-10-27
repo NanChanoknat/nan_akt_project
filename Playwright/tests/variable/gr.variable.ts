@@ -1,0 +1,13 @@
+export const grList = 'xpath = //a[@href="/goods-receipt-list?tab=pending"]'
+export const createGr = 'xpath = //div[contains(@class,"d-flex align-center")]/div/div/a'
+export const inputStore1 = 'xpath = //div[@class="v-select__slot"]/input[1]'
+export const inputProduct = 'xpath = //input[@placeholder="ค้นหาสินค้า"]'
+export const addProductButton = 'xpath = //button[@class="v-btn v-btn--icon v-btn--round theme--light v-size--default primary--text"]/parent::div[@class="text-right pt-2 col col-2"]/button'
+export const inputNumberOfGr = 'xpath = //input[@placeholder="จำนวนนำเข้า"]'
+export const saveGrButton = 'xpath = //button[2]//span[@class = "subtitle-1 font-weight-bold white--text" ]'
+export const confirmGrButton = 'xpath = //button/parent::div[@class="v-card__actions d-flex justify-space-between px-4"]/button[2]'
+
+export const selectFristGr = 'xpath = //tr[1]/td[7]/button'
+export const signButton = 'xpath = //button[@class = "ml-4 v-btn v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--large primary"]'
+export const signCanvas = 'xpath = //div[@class="v-card v-sheet v-sheet--outlined theme--light"]//div//canvas'
+export const saveSignButton = 'xpath = //button[@class="v-btn v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--large light-blue darken-4"]'

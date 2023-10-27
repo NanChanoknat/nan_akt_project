@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.7 on darwin)" generated="20230131 11:13:25.850" rpa="false" schemaversion="3">
+<suite id="s1" name="TS-003" source="/Users/chanoknattakieng/Work/Robot/tests/api/TS-003.robot">
+<test id="s1-t1" name="TS-003-12 Cancel Order By ID" line="81">
+<kw name="Cancel Order" library="order">
+<arg>154542</arg>
+<kw name="Create Authorization headers" library="header">
+<kw name="Load Json From File" library="JSONLibrary">
+<var>${json_obj}</var>
+<arg>${STORE_PAYLOAD_PATH}</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20230131 11:13:26.010" level="INFO">${json_obj} = {'client': 'b21zLXN0Z0Bha2l0YTpxd2VydHkxMjM0QA==', 'lastName': 'V4', 'tel': '0120001020', 'firstName': 'Nan', 'email': 'nanv4@mail.com', 'id': 564, 'store': {'id': 360, 'name': 'Nan V4', 'code': '0F9'...</msg>
+<status status="PASS" starttime="20230131 11:13:26.010" endtime="20230131 11:13:26.011"/>
+</kw>
+<kw name="Encode JWT" library="JWT">
+<var>${jwt}</var>
+<arg>${json_obj}</arg>
+<msg timestamp="20230131 11:13:26.011" level="INFO">${jwt} = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnQiOiJiMjF6TFhOMFowQmhhMmwwWVRweGQyVnlkSGt4TWpNMFFBPT0iLCJsYXN0TmFtZSI6IlY0IiwidGVsIjoiMDEyMDAwMTAyMCIsImZpcnN0TmFtZSI6Ik5hbiIsImVtYWlsIjoibmFudjRA...</msg>
+<status status="PASS" starttime="20230131 11:13:26.011" endtime="20230131 11:13:26.011"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${create_headers}</var>
+<arg>Authorization=${jwt}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230131 11:13:26.011" level="INFO">${create_headers} = {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnQiOiJiMjF6TFhOMFowQmhhMmwwWVRweGQyVnlkSGt4TWpNMFFBPT0iLCJsYXN0TmFtZSI6IlY0IiwidGVsIjoiMDEyMDAwMTAyMCIsImZpcnN0TmFtZSI6Ik5hbiIsI...</msg>
+<status status="PASS" starttime="20230131 11:13:26.011" endtime="20230131 11:13:26.011"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${headers}</arg>
+<arg>${create_headers}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230131 11:13:26.012" level="INFO">${headers} = {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnQiOiJiMjF6TFhOMFowQmhhMmwwWVRweGQyVnlkSGt4TWpNMFFBPT0iLCJsYXN0TmFtZSI6IlY0IiwidGVsIjoiMDEyMDAwMTAyMCIsImZpcnN0TmFtZSI6Ik5hbiIsI...</msg>
+<status status="PASS" starttime="20230131 11:13:26.012" endtime="20230131 11:13:26.012"/>
+</kw>
+<status status="PASS" starttime="20230131 11:13:26.010" endtime="20230131 11:13:26.012"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${resp_cancel_order}</var>
+<arg>url=${ORDER_URL}/${order_id}/cancel</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20230131 11:13:26.233" level="INFO">POST Request : url=https://api.staging.akitahub.com/orders/154542/cancel 
+ path_url=/orders/154542/cancel 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnQiOiJiMjF6TFhOMFowQmhhMmwwWVRweGQyVnlkSGt4TWpNMFFBPT0iLCJsYXN0TmFtZSI6IlY0IiwidGVsIjoiMDEyMDAwMTAyMCIsImZpcnN0TmFtZSI6Ik5hbiIsImVtYWlsIjoibmFudjRAbWFpbC5jb20iLCJpZCI6NTY0LCJzdG9yZSI6eyJpZCI6MzYwLCJuYW1lIjoiTmFuIFY0IiwiY29kZSI6IjBGOSIsInRlbCI6IjA5ODAwMDkwOTAiLCJhZGRyZXNzIjoiMTIxMTEiLCJzdWJEaXN0cmljdCI6Ilx1MGUwOFx1MGUxNVx1MGUzOFx1MGUwOFx1MGUzMVx1MGUwMVx1MGUyMyIsImRpc3RyaWN0IjoiXHUwZTA4XHUwZTE1XHUwZTM4XHUwZTA4XHUwZTMxXHUwZTAxXHUwZTIzIiwic3RhdGVQcm92aW5jZSI6Ilx1MGUwMVx1MGUyM1x1MGUzOFx1MGUwN1x1MGU0MFx1MGUxN1x1MGUxZVx1MGUyMVx1MGUyYlx1MGUzMlx1MGUxOVx1MGUwNFx1MGUyMyIsInBvc3Rjb2RlIjoiMTA5MDAiLCJwcm92aWRlciI6eyJuYW1lIjoidmVuZG9yX2FraXRhIiwidHlwZSI6InZlbmRvciIsImlkIjoiNWYzY2ZhNTRmMTFhZmVlZWI5ZjIxZmYxIn0sInNldHRpbmciOnsic2FmZXR5U3RvY2tRdHkiOm51bGwsImJpbGwiOnsiZXhwaXJlVHlwZSI6Im5vX2V4cGlyeSIsImV4cGlyZXNJblNlY29uZHMiOjAsImNhbmNlbE9uRXhwaXJlIjpmYWxzZX0sInZhdCI6MH0sInBob3RvcyI6W3sic3JjIjoiaHR0cHM6Ly9wcm9kdWN0aW9uLWFraXRhLXhsLnMzLWFwLXNvdXRoZWFzdC0xLmFtYXpvbmF3cy5jb20vc2VydmljZS1zdG9yZS9hc3NldHMvbG9nb3MvZGVmYXVsdC1zdG9yZStsb2dvLnN2ZyJ9XX0sIndhcmVob3VzZXMiOlt7InN0YXR1cyI6ImFjdGl2ZSIsInR5cGUiOiJ2ZW5kb3IiLCJuYW1lIjoiTmFuIFdIMiIsInNob3J0bmVzc05hbWUiOiJOYW4gV0gyIiwicHJvdmlkZXIiOnsibmFtZSI6InZlbmRvcl9ha2l0YSIsInR5cGUiOiJ2ZW5kb3IiLCJpZCI6IjVmM2NmYTU0ZjExYWZlZWViOWYyMWZmMSJ9LCJjb2RlIjoiMTY2ODc2MDUyNzIxNCIsImlkIjoiNjM3NzQzY2YyMWZiNjQwMDZkNzJkMmU1In1dLCJyb2xlcyI6W3sicGVybWlzc2lvbnMiOlsiYWxsLioiXSwibmFtZSI6Im93bmVyIiwiaWQiOiI2M2M3OTUwZTI5M2U1NGE3MDgyZmQ2MDAifV0sImlhdCI6MTY3NDAyNDkxMCwiZXhwIjoxNzA1NTYwOTEwfQ.ksnKyomHQ16Fv_h3pdMo3bFSJsZTr4m6HFPNj0BBAoU', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20230131 11:13:26.234" level="INFO">POST Response : url=https://api.staging.akitahub.com/orders/154542/cancel 
+ status=201, reason=Created 
+ headers={'x-powered-by': 'Express', 'access-control-allow-origin': '*', 'x-build-number': '0b1d3b22', 'content-type': 'application/json; charset=utf-8', 'content-length': '200', 'etag': 'W/"c8-hwWS2IQ+JtiPwRYzYMjz/5sFFGY"', 'date': 'Tue, 31 Jan 2023 04:13:26 GMT', 'x-envoy-upstream-service-time': '62', 'server': 'envoy'} 
+ body={"message":"done","data":{"success":true,"cancel_order":{"id":154542,"last_state":"ready_to_fulfillment","cancelled_at":"2023-01-31T04:13:26.161Z","cancelled_by":{"id":564,"email":"nanv4@mail.com"}}}} 
+ </msg>
+<msg timestamp="20230131 11:13:26.234" level="INFO">${resp_cancel_order} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20230131 11:13:26.012" endtime="20230131 11:13:26.234"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp_cancel_order}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20230131 11:13:26.234" endtime="20230131 11:13:26.234"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${cancel_order}</arg>
+<arg>${resp_cancel_order.json()}[data]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230131 11:13:26.235" level="INFO">${cancel_order} = {'success': True, 'cancel_order': {'id': 154542, 'last_state': 'ready_to_fulfillment', 'cancelled_at': '2023-01-31T04:13:26.161Z', 'cancelled_by': {'id': 564, 'email': 'nanv4@mail.com'}}}</msg>
+<status status="PASS" starttime="20230131 11:13:26.234" endtime="20230131 11:13:26.235"/>
+</kw>
+<status status="PASS" starttime="20230131 11:13:26.009" endtime="20230131 11:13:26.235"/>
+</kw>
+<status status="PASS" starttime="20230131 11:13:26.009" endtime="20230131 11:13:26.236"/>
+</test>
+<status status="PASS" starttime="20230131 11:13:25.852" endtime="20230131 11:13:26.236"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="TS-003">TS-003</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

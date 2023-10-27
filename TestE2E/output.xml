@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.7 on darwin)" generated="20230329 14:02:18.218" rpa="false" schemaversion="3">
+<suite id="s1" name="Test Google" source="/Users/chanoknattakieng/Work/TestE2E/test_google.robot">
+<test id="s1-t1" name="Search Cat on Google" line="21">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>https://www.google.com</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230329 14:02:18.290" level="INFO">Opening browser 'Chrome' to base url 'https://www.google.com'.</msg>
+<status status="PASS" starttime="20230329 14:02:18.290" endtime="20230329 14:02:27.442"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=q</arg>
+<arg>cat</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230329 14:02:27.443" level="INFO">Typing text 'cat' into text field 'name=q'.</msg>
+<status status="PASS" starttime="20230329 14:02:27.443" endtime="20230329 14:02:28.130"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>name=btnK</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230329 14:02:28.131" level="INFO">Clicking button 'name=btnK'.</msg>
+<status status="PASS" starttime="20230329 14:02:28.130" endtime="20230329 14:02:32.888"/>
+</kw>
+<status status="PASS" starttime="20230329 14:02:18.289" endtime="20230329 14:02:32.888"/>
+</test>
+<doc>This is a basic test</doc>
+<status status="PASS" starttime="20230329 14:02:18.219" endtime="20230329 14:02:32.889"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test Google">Test Google</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
